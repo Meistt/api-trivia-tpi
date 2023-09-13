@@ -1,17 +1,18 @@
 package api
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func SetupRouter(r *gin.Engine, controller controller.TriviaController) {
+func SetupRouter(r *gin.Engine) {
 	v1 := r.Group("/api/v1")
 	{
-		trivia := v1.Group("trivia")
+		a := v1.Group("trivia")
 		{
-			trivia.GET("", controller.ObtenerPreguntas)
+			fmt.Print(a)
 		}
 	}
 	r.GET("api/doc/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
